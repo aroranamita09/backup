@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div class="mat-elevation-z8">
+  <table mat-table matSort>
+    <mat-list role="list" *ngFor="let row of submissionData">
+      <ng-container matColumnDef="questionTitle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Question Title </th>
+        <td mat-cell *matCellDef="let row"> {{row.questionTitle}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="difficulty">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty</th>
+        <td mat-cell *matCellDef="let row"> {{row.difficulty}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="testCasePassed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Testcase Passed </th>
+        <td mat-cell *matCellDef="let row"> {{row.testCasePassed}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalTestCases">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Testcases</th>
+        <td mat-cell *matCellDef="let row"> {{row.totalTestCases}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Score </th>
+        <td mat-cell *matCellDef="let row"> {{row.score}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="solution">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Solution </th>
+        <td mat-cell *matCellDef="let row"><a mat-raised-button routerLink=".">Solution</a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </mat-list>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
